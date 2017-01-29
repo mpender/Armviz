@@ -13,7 +13,7 @@ WORKDIR /opt/arm-visualizer/
 
 RUN npm install && npm build
 
-EXPOSE 3000 3001 22
+EXPOSE 3000 3001 22 8080
 
-CMD ["npm" "start" "--prefix /opt/arm-visualizer/"] 
+ENTRYPOINT ["npm", "start", "--prefix /opt/arm-visualizer/"] 
 
