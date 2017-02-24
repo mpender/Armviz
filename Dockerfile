@@ -1,19 +1,29 @@
 FROM mpender/ansible-docker
 
 RUN yum install -y git \
-	epel-release 
+	epel-release \
+  bzip2
 
 RUN yum install npm -y
-	
+
 WORKDIR /opt
 
-RUN git clone https://github.com/msshli/arm-visualizer.git
+RUN git clone https://github.com/ytechie/AzureResourceVisualizer.git
 
-WORKDIR /opt/arm-visualizer/
+WORKDIR /opt/AzureResourceVisualizer/
 
-RUN npm install && npm build
+#RUN npm install && npm build
+
+RUN npn install && npm install -g gulp bower typings typescript
+
+RUN bower install --allow-root
+
+RUN typings install
 
 EXPOSE 3000 3001 22 8080
 
-ENTRYPOINT ["npm", "start", "--prefix /opt/arm-visualizer/"] 
+ENTRYPOINT ["cd", "/opt/AzureResourceVisualizer", "&&", "gulp", "serve"]
 
+#######
+#ENTRYPOINT ["cd", "", "--prefix /opt/arm-visualizer/"]
+#######
