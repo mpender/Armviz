@@ -14,7 +14,8 @@ WORKDIR /opt/AzureResourceVisualizer/
 
 #RUN npm install && npm build
 
-RUN npn install && npm install -g gulp bower typings typescript
+RUN npm install 
+RUN  npm install -g gulp bower typings typescript
 
 RUN bower install --allow-root
 
