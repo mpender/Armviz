@@ -14,14 +14,14 @@ WORKDIR /opt/AzureResourceVisualizer/
 
 #RUN npm install && npm build
 
-RUN npm install 
-RUN  npm install -g gulp bower typings typescript
+RUN npm install
+RUN npm install -g gulp bower typings typescript
 
 RUN bower install --allow-root
 
 RUN typings install
 
-EXPOSE 3000 3001 22 8080
+#EXPOSE 3000 3001 22 8080
 
 ENTRYPOINT ["cd", "/opt/AzureResourceVisualizer", "&&", "gulp", "serve"]
 
