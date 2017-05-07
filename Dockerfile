@@ -2,7 +2,7 @@ FROM mpender/ansible-docker
 
 RUN useradd armviz
 
-RUN yum install -y epel-release \
+RUN yum install -y epel-release 
 
 RUN yum install npm -y
 
