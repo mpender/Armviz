@@ -1,8 +1,8 @@
 FROM mpender/ansible-docker
 
-RUN yum install -y git \
-	epel-release \
-  bzip2
+RUN useradd armviz
+
+RUN yum install -y epel-release \
 
 RUN yum install npm -y
 
@@ -17,8 +17,11 @@ WORKDIR /opt/AzureResourceVisualizer/
 RUN npm install
 RUN npm install -g gulp bower typings typescript
 
+# Bower needs non-root user
+USER armviz
 RUN bower install --allow-root
 
+USER root
 RUN typings install
 
 #EXPOSE 3000 3001 22 8080
